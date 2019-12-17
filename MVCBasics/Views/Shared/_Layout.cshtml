@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />  @*//denna har dragits fprn wwwroot*@
+
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+
+
+    @*detta är tillagt - (kommentarer ser ut så här i MVC*@
+    <footer>
+        <p>Peter &copy; @DateTime.Now.Date</p>
+    </footer>
+
+</body>
+</html>

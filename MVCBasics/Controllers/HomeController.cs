@@ -18,10 +18,6 @@ namespace MVCBasics.Controllers
         //varje view fil där skall ha en IActionResult här - man skriver namnet som .cshtml-filen har och högerklickar på namnet "Company" och väljer "Add view"
         //nya viewerna skall dyka upp som sub-objekt under "HomeController"
 
-        public IActionResult Company()
-        {
-            return View();
-        }
 
         public IActionResult Forsale() //krångel när dessa två sista skapades - ser rätt ut men kan kanske behöva göra om?
         {

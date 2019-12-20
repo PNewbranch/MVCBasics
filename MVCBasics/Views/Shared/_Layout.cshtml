@@ -9,10 +9,41 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
+
+    @*här routar vi - men vi har även en annan typ av routing, osäker på hur*@
+
+    <nav>
+        <ul>
+            <li>
+                @*Hitta routern som går till index i home - skriv Url:en*@
+                <a href="@Url.Action("Index", "Home")">The Company</a> @*denna skapar första punkten i punkttabellen Index i LÄNKFORMAT*@
+            </li>
+
+
+            <li>
+                @*@Html.ActionLink("Math Table", "MathTable", "Home")  ActionLink retunerar ett ankare med en url till en angiven action*@
+                @*ovan går till något som byggs upp (uffes)? därför action link? skapar en avvikande rad som bara går till en sida*@
+
+                <a asp-action="Forsale" asp-controller="Home">For Sale</a> @*denna skapar andra punkten UTAN länk*@
+
+            </li>
+
+            <li>
+                <a asp-action="Sold" asp-controller="Home">Sold</a> @*denna skapar andra punkten UTAN länk*@
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+
     <div>
-        @RenderBody()
+        @RenderBody() @*//skapa en del av en sida, den os du nu är på?*@
     </div>
 
+         
 
     @*detta är tillagt - (kommentarer ser ut så här i MVC*@
     <footer>

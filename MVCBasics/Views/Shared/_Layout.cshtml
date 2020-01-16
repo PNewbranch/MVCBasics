@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
 
-    <link href="~/css/StyleSheet.css" rel="stylesheet" />  @*//denna har dragits fprn wwwroot*@
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />  @*//denna har dragits från wwwroot - det är DENNA som körs i endpoint som default*@
 
     <title>@ViewBag.Title</title>
 </head>
@@ -32,6 +32,10 @@
                 <a asp-action="Sold" asp-controller="Home">Sold</a> @*denna skapar andra punkten UTAN länk*@
             </li>
 
+            <li>
+                <a asp-action="MathTable" asp-controller="Home">Mattetabell</a> @*denna skapar andra punkten UTAN länk*@
+            </li>
+
         </ul>
 
     </nav>
@@ -40,14 +44,14 @@
 
 
     <div>
-        @RenderBody() @*//skapa en del av en sida, den os du nu är på?*@
+        @RenderBody() @*//här använder vi våra Viewers - skapa en del av en sida, den os du nu är på?*@
     </div>
 
          
 
     @*detta är tillagt - (kommentarer ser ut så här i MVC*@
     <footer>
-        <p>Peter &copy; @DateTime.Now.Date</p>
+        <p>Peter &copy; @DateTime.Now</p>
     </footer>
 
 </body>

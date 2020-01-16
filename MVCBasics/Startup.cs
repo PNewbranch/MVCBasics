@@ -19,6 +19,7 @@ namespace MVCBasics
             services.AddMvc(); //denna läggs till för att tala om att vi skall använda MVC
         }
 
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -26,8 +27,6 @@ namespace MVCBasics
             {
                 app.UseDeveloperExceptionPage();
             }
-
-
 
             //Vi lägger här till middelware som går igenom till routing (alltså det som ligger under katalogen "wwwroot")
             //Routern kollar
@@ -38,13 +37,10 @@ namespace MVCBasics
             app.UseStaticFiles();   //"Å DÄR LIGGER DEN JU" - Denna läggs till >> default opens up the wwwroot to be accessed - som nu används som en statisk server
                                     //man öppnar allts upp det an behöver succesivt
 
-
             //Denna klippte vi in men den fungerar inte här...  app.UseMvcWithDefaultRoute(); //sätter MVC default. 
 
             app.UseRouting(); //"här vet jag vad jag skall göra för respons"  
                               //hittar vi filen Wooow - vi kör den och kommer då aldrig ner i Endpoint=defultläge
-
-
 
 
             app.UseEndpoints(endpoints =>

@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "MathTable";
+}
+
+<h1>MathTable</h1>
+
+<table>
+
+    @for (int y = 1; y <= 12; y++)
+    {
+        <tr>
+            @for (int x = 1; x <= 12; x++)
+            {
+                <td> @(y * x) </td>
+            }
+        </tr>
+    }
+
+</table>

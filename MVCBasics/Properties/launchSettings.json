@@ -1,7 +1,10 @@
 ﻿{
+
+  //Detär i denna fil vi kopplar ut oss mot INTERNET - skall vi flytta vår applikation till en annan server så är det i denna fil vi skall ändra.
+
   "iisSettings": {
-    "windowsAuthentication": false, 
-    "anonymousAuthentication": true, 
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
     "iisExpress": {
       "applicationUrl": "http://localhost:50219",
       "sslPort": 44370

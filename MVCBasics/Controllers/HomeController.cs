@@ -19,12 +19,7 @@ namespace MVCBasics.Controllers
         //nya viewerna skall dyka upp som sub-objekt under "HomeController"
 
 
-        public IActionResult Forsale() //krångel när dessa två sista skapades - ser rätt ut men kan kanske behöva göra om?
-        {
-            return View();
-        }
-
-        public IActionResult Payment() //Glömde skriva return på denna innan jag Addade
+        public IActionResult Forsale() 
         {
             return View();
         }
@@ -34,6 +29,10 @@ namespace MVCBasics.Controllers
             return View();
         }
         
+        public IActionResult MathTable()
+        {
+            return View();
+        }
 
     }
 

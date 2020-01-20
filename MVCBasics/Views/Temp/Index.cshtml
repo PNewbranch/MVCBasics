@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index - TempIndex</h1>
+
+<h3>Ange din temperatur med siffror (andra värden ger ingen reaktion).</h3>
+
+
+@if (ViewBag.Msg != null)
+{
+    <h3>@ViewBag.Msg</h3>
+}
+else
+{
+    <h3>Värde saknas.</h3>
+}
+
+<form asp-action="SaveTemp" method="post">  @*post, vi vill hämnta in ett värde (post skickar data på ett dolt sätt, skickas inte i url:en *@
+
+    <input type="text" name="message" value="" />
+
+    <input type="submit" value="Kolla tempen!" />
+
+</form>
+
+
+@*  get - används för att hämta sida exmpelvis då vi klickar på e länk
+    post - anänds för att läsa in /skicka data (utan dess url)  *@
+

@@ -17,6 +17,16 @@ namespace MVCBasics
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(); //denna läggs till för att tala om att vi skall använda MVC
+
+            services.AddSession(options =>      //läggs till för exempelvis i kombination med Viewbox - här konfig. för att komma ihåg värden från sessionen i 10 minuter
+            {                                   //utöver ADD-session så måste en USE-session användas
+                // Set a short timeout for easy testing.
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
+                options.Cookie.HttpOnly = true;
+                // Make the session cookie essential
+                options.Cookie.IsEssential = true;
+            });
+
         }
 
 
@@ -41,6 +51,11 @@ namespace MVCBasics
 
             app.UseRouting(); //"här vet jag vad jag skall göra för respons"  
                               //hittar vi filen Wooow - vi kör den och kommer då aldrig ner i Endpoint=defultläge
+
+
+            app.UseSession();
+            //app.UseHttpContextItemsMiddleware();// Core 3 update meesed this one up
+
 
 
             app.UseEndpoints(endpoints =>

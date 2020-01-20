@@ -13,6 +13,9 @@
     @*här routar vi - men vi har även en annan typ av routing, osäker på hur*@
 
     <nav>
+
+        <img src="~/img/LoBiz logga.JPG" />
+
         <ul>
             <li>
                 @*Hitta routern som går till index i home - skriv Url:en*@
@@ -34,6 +37,10 @@
 
             <li>
                 <a asp-action="MathTable" asp-controller="Home">Mattetabell</a> @*denna skapar andra punkten UTAN länk*@
+            </li>
+
+            <li>
+                <a asp-action="Index" asp-controller="Temp">TempKoll</a> @*denna skapar andra punkten UTAN länk*@
             </li>
 
         </ul>

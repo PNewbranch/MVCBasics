@@ -1,29 +1,38 @@
 ﻿
+@using MVCBasics.Models
+
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index - TempIndex</h1>
+<h1>Är du het nog för att göra affärer med oss?</h1>
 
-<h3>Ange din temperatur med siffror (andra värden ger ingen reaktion).</h3>
+@*<h3>Ange din temperatur med siffror (andra värden ger ingen reaktion).</h3>*@
 
 
 @if (ViewBag.Msg != null)
 {
-    <h3>@ViewBag.Msg</h3>
+    <h3 id="dangerText">@ViewBag.Msg</h3>
 }
 else
 {
-    <h3>Värde saknas.</h3>
+    <h3 id="dangerText">Ange din temperatur i siffror - tryck sedan på knappen!</h3>
 }
 
-<form asp-action="SaveTemp" method="post">  @*post, vi vill hämnta in ett värde (post skickar data på ett dolt sätt, skickas inte i url:en *@
 
-    <input type="text" name="message" value="" />
 
-    <input type="submit" value="Kolla tempen!" />
+
+<form asp-controller="Temp" asp-action="Index" method="post">
+    @*3. och letar upp Controllern "Temp" som skickar oss till det andra Index (post-indexen) *@
+    
+    <input type="text" name="temp" value="" />     @*2. tar jag värdet i formfältet *@
+    <input id="dangerText" type="submit" value="Kolla tempen!" />  @*1. Knapp - när jag trycker på knappen *@
+
+    @*post, vi vill hämnta in ett värde (post skickar data på ett dolt sätt, skickas inte i url:en*@
 
 </form>
+
 
 
 @*  get - används för att hämta sida exmpelvis då vi klickar på e länk

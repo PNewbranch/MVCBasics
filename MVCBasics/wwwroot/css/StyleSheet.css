@@ -6,3 +6,20 @@ h1 {
     color:rebeccapurple;
     background-color:antiquewhite;
 }
+
+
+
+
+/*id - bara på enstaka*/
+#dangerText {       /*<li id="dangerText">Look Ok but is not <code>- om du börjar med ett p istället för li så missar du siffran före</code>*/ 
+    color:red;
+}
+
+/*class - på alla*/
+.goldenText {       /*<li class="goldenText">Only have li element inside ol ul elements</li>*/
+    color:gold;
+}
+
+
+    
+    

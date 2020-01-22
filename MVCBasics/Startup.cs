@@ -61,6 +61,7 @@ namespace MVCBasics
             app.UseEndpoints(endpoints =>
             {
                 //special routes before default
+                endpoints.MapControllerRoute("CheckTempInputFromUser", "{controller=Temp}/{action=Index}/{id?}"); //lag till denna för tempkontroll
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");  //denna raden aktiverar htmlsidan vi skall ha katalog HOME och  dess INDEX
 
                 //denna kod ersätts med rad ovan

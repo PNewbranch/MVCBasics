@@ -18,14 +18,22 @@ namespace MVCBasics
         {
             services.AddMvc(); //denna läggs till för att tala om att vi skall använda MVC
 
-            services.AddSession(options =>      //läggs till för exempelvis i kombination med Viewbox - här konfig. för att komma ihåg värden från sessionen i 10 minuter
+
+
+            services.AddDistributedMemoryCache(); //Tillhör nedan?  //ligger i ramminne server
+
+
+            services.AddSession(options =>      //läggs till för exempelvis i kombination med Viewbox - här konfig. för att komma ihåg värden från sessionen i 30 minuter
             {                                   //utöver ADD-session så måste en USE-session användas
+                                                 //ligger i en cookie-fil på servern - en "sessioncookie" (ej klientcookie)
                 // Set a short timeout for easy testing.
-                options.IdleTimeout = TimeSpan.FromMinutes(10);
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
                 options.Cookie.HttpOnly = true;
                 // Make the session cookie essential
                 options.Cookie.IsEssential = true;
             });
+
+
 
         }
 
@@ -61,14 +69,16 @@ namespace MVCBasics
             app.UseEndpoints(endpoints =>
             {
                 //special routes before default
-                endpoints.MapControllerRoute("CheckTempInputFromUser", "{controller=Temp}/{action=Index}/{id?}"); //lag till denna för tempkontroll
+
+                //Lagt till nedan - unika endpoint som ger träff på Controller=Temp/Action=Index - Andra värdet "TempKoll" blir url:en som syns som path
+                endpoints.MapControllerRoute(
+                    name: "CheckTempInputFromUser", //route-regelns namn
+                    pattern: "TempKoll",            //url:en
+                    defaults: new { Controller = "Temp", Action = "Index" }); //Controller och Action som anropas (notera bara controllerns PREFIX)
+
+
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");  //denna raden aktiverar htmlsidan vi skall ha katalog HOME och  dess INDEX
 
-                //denna kod ersätts med rad ovan
-                //endpoints.MapGet("/", async context =>
-                //{
-                //    await context.Response.WriteAsync("Hello World!");
-                //});
             });
         }
     }

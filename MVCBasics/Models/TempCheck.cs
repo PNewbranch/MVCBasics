@@ -10,7 +10,7 @@ namespace MVCBasics.Models
 
         //Models används för att göra med specifika konttroller och beräkningar - alltså EXEMPELVIS KONTROLLERANDE LOGIK
 
-        public static string CheckTempInputFromUser (int Temp)
+        public static string CheckTempInputFromUser(int Temp)
         {
             if (Temp > 37)
             {

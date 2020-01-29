@@ -3,10 +3,48 @@
 }
 
 h1 {
-    color:rebeccapurple;
+    color:limegreen
     background-color:antiquewhite;
 }
 
+th {
+    background-color:lightblue;
+}
+
+
+td {
+    border: double;
+    background-color: gainsboro;
+}
+
+ol > li > ul {
+    color:blue;
+    width:400px;
+    border: double;
+}
+
+ol > li {
+    font:bold;
+    width: 600px;
+    border: double;
+}
+
+/*funkar ej
+button {
+    border: double;
+}*/
+
+li, tr {
+    border:double;
+}
+
+
+
+
+/*fungerar inte*/
+tbody {
+    border:dotted.thick.;
+}
 
 
 

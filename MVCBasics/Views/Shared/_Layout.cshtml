@@ -22,8 +22,8 @@
     @*CDN-row2 - Detta är ANDRA RADEN i "BootstrapCDN Skip the download with BootstrapCDN to deliver cached version of Bootstrap’s compiled CSS and JS to your project.""*@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-
-
+   
+@*BOOTSTRAP OVAN SKALL LIGGA FÖRE STYLSHEET NEDAN*@
 
 
     <link rel="stylesheet" href="~/css/StyleSheet.css" />  @*//denna har dragits från wwwroot - det är DENNA som körs i endpoint som default*@
@@ -72,6 +72,12 @@
             <li class="navbar-nav">
                 <a class="nav-link" asp-action="Index" asp-controller="Game">GuessingGame</a> @*denna skapar andra punkten UTAN länk*@
             </li>
+
+
+            <li class="navbar-nav">
+                <a class="nav-link" asp-action="Index" asp-controller="People">Kundregister</a> @*denna skapar andra punkten UTAN länk*@
+            </li>
+
 
 
         </ul>

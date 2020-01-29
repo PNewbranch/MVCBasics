@@ -1,0 +1,26 @@
+﻿@*Lagt till första raden nedan*@
+@model PeopleViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create People</h1>
+
+<form asp-action="Create" asp-controller="People" method="post">
+
+    <label class="col-sm-1" class="list-group-item" asp-for="Name">Namn: </label>
+    <input asp-for="Name" />
+    <span asp-validation-for="Name"></span>
+
+    <label class="col-sm-1" class="list-group-item" asp-for="PhoneNumber">Telefonnummer: </label>
+    <input asp-for="PhoneNumber" />
+    <span asp-validation-for="PhoneNumber"></span>
+
+    <label class="col-sm-1" class="list-group-item" asp-for="City">Stad: </label>
+    <input asp-for="City" />
+    <span asp-validation-for="City"></span>
+
+    <input type="submit" class="btn btn-success" value="Lägg till Kund" />
+
+</form>
+

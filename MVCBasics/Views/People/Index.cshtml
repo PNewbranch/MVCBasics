@@ -1,0 +1,87 @@
+﻿@*Lagt till första raden nedan*@
+@model List<People>
+@{
+    ViewData["Title"] = "People Index";
+}
+
+
+
+
+
+@*DENNA VYN SKALL BARA VISA VIDARE TILL ANNAN SIDA*@
+
+<h1>Kundregister</h1>
+
+@*Denna raden lägger ut en klickbar text "Registrera Kund" - använder dedikerade taggen "a" som ankare (slipper då ha koppling till något annat).*@
+@*"a" fungerar som ett ankare/en dummy (dedikerad precis som ec <p> </p>)*@
+<a class="btn btn-success" style="width:50%" asp-action="Create"> Klicka här för att registrera NY KUND</a>
+
+@*Taghelper är inte tänkt att fungera på button - fungerar främst på ANKAR-länk och i Forms
+    Se: https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/intro?view=aspnetcore-3.1
+    <button class="btn btn-success" asp-action="Create"> Registrera Kund</button>*@
+
+
+
+
+
+
+
+
+@*Här använder jag html tabell - ej bootstrap*@
+<table class="table table-bordered" style="width:50%">
+
+    @*Använder thead kontra tbody för att capsla in delarna - så att jag kan pilla lite på dem var för sid i exempelvis CSS-Stylesheet.*@
+    <thead>
+        <tr>
+            <th>Namn</th>
+            <th>Telefon</th>
+            <th>Stad</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (People aPeople in Model)
+        {
+            <tr>
+                <td>@aPeople.Name</td>
+                <td>@aPeople.PhoneNumber</td>
+                <td>@aPeople.City</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
+
+
+<form>
+    <p id="dangerText">Vid filtrering, ange värde och tryck FILTRERA.</p>
+
+    <input id="dangerText" type="text" name="Söknyckel"><br>
+
+    @*"submit" använder hela formen*@
+    <input class="btn btn-success" style="width:50%" asp-action="" type="submit" value="FILTRERA">
+
+    @*det gör inte en button?*@
+    @*<a class="btn btn-success" style="width:80%" asp-action=""> Klicka här för att FILTRERA</a>*@
+
+</form>
+
+
+
+
+
+@*Visa enstaka objekt under varandra - ej tabell*@
+@*<div>
+        @foreach (People aPeople in Model)
+        {
+            <div id="@("id" + aPeople.Id)">
+                <p>Namn: @aPeople.Name</p>
+                <p>Tel: @aPeople.PhoneNumber</p>
+                <p>Stad: @aPeople.City</p>
+            </div>
+        }
+    </div>*@
+
+

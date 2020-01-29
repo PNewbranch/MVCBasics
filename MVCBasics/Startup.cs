@@ -18,7 +18,10 @@ namespace MVCBasics
         {
             services.AddMvc(); //denna läggs till för att tala om att vi skall använda MVC
 
-
+            //För att kunna uppdatera fönster med F5 - lägga till paket 
+            //    Tools/NuGet Package Manager/Manage NuGet Package for soloution och installera Microsoft.AspNetCore.Mvc.Razor.ViewCompilation
+            //    lägg sedan till denna rad nedan:
+            services.AddRazorPages().AddRazorRuntimeCompilation();
 
             services.AddDistributedMemoryCache(); //Tillhör nedan?  //ligger i ramminne server
 

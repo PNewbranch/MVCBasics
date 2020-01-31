@@ -75,9 +75,16 @@ namespace MVCBasics
 
                 //Lagt till nedan - unika endpoint som ger träff på Controller=Temp/Action=Index - Andra värdet "TempKoll" blir url:en som syns som path
                 endpoints.MapControllerRoute(
-                    name: "CheckTempInputFromUser", //route-regelns namn
-                    pattern: "TempKoll",            //url:en
+                    name: "CheckTempInputFromTheUser",  //route-regelns namn
+                    pattern: "TempKollen",              //url:en
                     defaults: new { Controller = "Temp", Action = "Index" }); //Controller och Action som anropas (notera bara controllerns PREFIX)
+
+
+                //Lagt till nedan - unika endpoint som ger träff på Controller=Temp/Action=Index - Andra värdet "TempKoll" blir url:en som syns som path
+                endpoints.MapControllerRoute(
+                    name: "Kundregister",               //route-regelns namn
+                    pattern: "Kundregister",            //url:en
+                    defaults: new { Controller = "People", Action = "Index" }); //Controller och Action som anropas (notera bara controllerns PREFIX)
 
 
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");  //denna raden aktiverar htmlsidan vi skall ha katalog HOME och  dess INDEX

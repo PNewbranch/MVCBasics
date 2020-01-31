@@ -1,10 +1,12 @@
 ﻿body {
     background-color:aquamarine;
+    padding:12px;
 }
 
 h1 {
     color:limegreen
     background-color:antiquewhite;
+    padding:12px;
 }
 
 th {
@@ -28,6 +30,9 @@ ol > li {
     width: 600px;
     border: double;
 }
+
+
+
 
 /*funkar ej
 button {

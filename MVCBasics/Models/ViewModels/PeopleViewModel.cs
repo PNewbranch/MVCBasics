@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 
+
+
 namespace MVCBasics.Models
 {
     public class PeopleViewModel
@@ -20,4 +22,20 @@ namespace MVCBasics.Models
 
 
     }
+
+
+
+
+
+
+
+
 }
+
+
+        //public static string FilterData(string filtervariabel)
+        //{ 
+        //    return "Du har en feber (över 37 grader) - du är således HET NOG!";
+        //}
+
+

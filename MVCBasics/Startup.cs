@@ -4,19 +4,48 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpsPolicy;   //using Microsoft.AspNetCore.Http;  ersatts
+using Microsoft.Extensions.Configuration;  
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using MVCBasics.Models;
 
 namespace MVCBasics
 {
     public class Startup
     {
+
+        public IConfiguration Configuration { get; } //lagt till 
+
+        public Startup(IConfiguration configuration) //lagt till
+        {
+            Configuration = configuration;
+        }
+
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+
+
+
+            //För DB SQL Server
+            services.AddDbContext<ExDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
+
+            //services.AddSingleton<ICarRepository, MockCarRepository>();// very alike a static - lagt till
+            services.AddScoped<IPeopleRepository, PeopleRepository>();
+            services.AddScoped<IPeopleService, PeopleService>();
+
+
+
+
+
             services.AddMvc(); //denna läggs till för att tala om att vi skall använda MVC
+
 
             //För att kunna uppdatera fönster med F5 - lägga till paket 
             //    Tools/NuGet Package Manager/Manage NuGet Package for soloution och installera Microsoft.AspNetCore.Mvc.Razor.ViewCompilation
@@ -24,7 +53,6 @@ namespace MVCBasics
             services.AddRazorPages().AddRazorRuntimeCompilation();
 
             services.AddDistributedMemoryCache(); //Tillhör nedan?  //ligger i ramminne server
-
 
             services.AddSession(options =>      //läggs till för exempelvis i kombination med Viewbox - här konfig. för att komma ihåg värden från sessionen i 30 minuter
             {                                   //utöver ADD-session så måste en USE-session användas
@@ -48,13 +76,21 @@ namespace MVCBasics
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
+
 
             //Vi lägger här till middelware som går igenom till routing (alltså det som ligger under katalogen "wwwroot")
             //Routern kollar
             //    om regler blockar den så skickad den tillbaka
             //    om de är ok så går den ner till aktuellt middelware-program
 
-            //app.UseDefaultFiles(); "JAG SKALL LETA EFTER" - Denna lades till men kommenterades sedan bort då tekniken inte fungerade längre 
+
+            app.UseHttpsRedirection(); //Lagt till
+
             app.UseStaticFiles();   //"Å DÄR LIGGER DEN JU" - Denna läggs till >> default opens up the wwwroot to be accessed - som nu används som en statisk server
                                     //man öppnar allts upp det an behöver succesivt
 
@@ -66,6 +102,9 @@ namespace MVCBasics
 
             app.UseSession();
             //app.UseHttpContextItemsMiddleware();// Core 3 update meesed this one up
+
+
+            app.UseAuthorization(); //lagt till 
 
 
 
@@ -90,6 +129,17 @@ namespace MVCBasics
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");  //denna raden aktiverar htmlsidan vi skall ha katalog HOME och  dess INDEX
 
             });
+
+
+            //Uffes endpoint
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=Home}/{action=Index}/{id?}");
+            //});
+
+
         }
     }
 }

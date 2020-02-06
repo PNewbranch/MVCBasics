@@ -2,33 +2,45 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MVCBasics.Models;         //Lagt till 
 using Microsoft.AspNetCore.Mvc;  //Lagt till 
+using MVCBasics.Models;         //Lagt till 
 
 
 namespace MVCBasics.Controllers
 {
     public class PeopleController : Controller
     {
+
+        //MÅSTE AVÄNDA DEPENDENCE INJECTION
+        IPeopleService _peopleService; //spara som injectat
+
+        public PeopleController(IPeopleService peopleService)  //Konstructor med dependence injection
+        {
+            _peopleService = peopleService;
+        }
+
+        //---------------------------------------------------------------------------
+               
+
         [HttpGet]
         public IActionResult Index()  //denna skall vara en lista
         {
-            return View(People.peopleList);
+            return View(_peopleService.All()); //Serviceanrop
         }
 
 
         [HttpPost]
-
         public IActionResult Index(string filtervariabel)  /*inparameter är formens inputbariabel "filtervariabel" - måste vara lika*/
         {
             if (string.IsNullOrWhiteSpace(filtervariabel))
             {
-                ViewBag.Msg = "Du måste ange en siffra!";
-                return View(People.peopleList);               /* Fick error for each - la till peoplelist*/
+                return View(_peopleService);            
+            }
+            else
+            {
+                return View(_peopleService.All());        //Anropa service visa alla
 
             }
-
-            return View(People.peopleList);
         }
 
 
@@ -46,36 +58,18 @@ namespace MVCBasics.Controllers
 
         //Posta/Spara formen 
         [HttpPost]
-        public IActionResult Create(PeopleViewModel peopleViewModel) /*använder view model för att få in rätt värde */
+        public IActionResult Create(PeopleViewModel people) /*använder view model för att få in rätt värde */
         {
             if (ModelState.IsValid)
             {
-                People.peopleList.Add(
-                    new People()
-                    {
-                        Name = peopleViewModel.Name,
-                        PhoneNumber = peopleViewModel.PhoneNumber,
-                        City = peopleViewModel.City
-                    });
+                _peopleService.Create(people.Name, people.PhoneNumber, people.City);
 
-                return RedirectToActionPermanent("Index");
+                return RedirectToAction("Index");
             }
-            return View(peopleViewModel);
+            return View(people);
         }
 
 
 
-
-        ////Uffes del ej utvecklad - gör själv
-        //public IActionResult Details()
-        //{
-        //    return View();
-        //}
-
-        ////Uffes del ej utvecklad
-        //public IActionResult Remove()
-        //{
-        //    return View();
-        //}
     }
 }

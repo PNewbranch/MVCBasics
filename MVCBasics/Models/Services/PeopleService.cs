@@ -35,15 +35,28 @@ namespace MVCBasics.Models            //.Services  ta bort
             return _peopleRepo.Create(people);
         }
      
+
+
         public bool Remove(int id)
         {
-            throw new NotImplementedException();
+            People people = Find(id);
+
+            if (people != null)
+            {
+                return _peopleRepo.Remove(people);
+            }
+
+            return false;
         }
+
+
 
         public People Find(int id)
         {
             return _peopleRepo.Find(id);
         }
+
+
 
         public bool Update(People people)
         {

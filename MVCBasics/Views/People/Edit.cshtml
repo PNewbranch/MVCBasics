@@ -1,12 +1,12 @@
 ﻿@*Lagt till första raden nedan*@
-@model PeopleViewModel      //Vi använder en ViewModel för att minimera / förtydliga data gentemot användaren
+@model People      //Vi använder en ViewModel för att minimera / förtydliga data gentemot användaren
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Update";
 }
 
 <h1>Create People</h1>
 
-<form asp-action="Create" asp-controller="People" method="post">
+<form asp-action="Update" asp-controller="People" method="post">
 
     <label class="col-sm-1" class="list-group-item" asp-for="Name">Namn: </label>
     <input asp-for="Name" />

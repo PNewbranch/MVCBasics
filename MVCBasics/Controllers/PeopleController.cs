@@ -53,9 +53,7 @@ namespace MVCBasics.Controllers
         {
             return View();
         }
-
-
-
+        
         //Posta/Spara formen 
         [HttpPost]
         public IActionResult Create(PeopleViewModel people) /*använder view model för att få in rätt värde */
@@ -68,6 +66,56 @@ namespace MVCBasics.Controllers
             }
             return View(people);
         }
+
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            People people = _peopleService.Find(id);
+
+            if (people == null)
+            {
+                ViewBag.msg = "Kunden saknas.";
+                return View("Index", _peopleService.All());
+            }
+            return View(people);
+        }
+
+        [HttpPost]
+        public IActionResult Update(People people)
+        {
+            if (ModelState.IsValid)
+            {
+                _peopleService.Update(people);
+
+                return RedirectToAction("Index");
+            }
+            return View(people);
+        }
+
+
+
+
+
+
+
+
+        [HttpGet]
+        public IActionResult Remove(int id)
+        {
+            bool result = _peopleService.Remove(id); //serviceinterfacet kallar på interface 
+
+            if (result)
+            {
+                ViewBag.msg = "Kunden har raderats.";
+            }
+            else
+            {
+                ViewBag.msg = "Det gick inte att radera kunden, försök igen senare.";
+            }
+            return View("Index", _peopleService.All());
+        }
+
 
 
 

@@ -40,6 +40,10 @@ namespace MVCBasics.Models            //.Repo
         }
 
 
+
+
+
+
         public bool Update(People people)
         {
             People peopleOrginal = Find(people.Id);
@@ -53,6 +57,11 @@ namespace MVCBasics.Models            //.Repo
             _exDbContext.SaveChanges();
             return true;
         }
+
+
+
+
+
 
 
         public List<People> All()

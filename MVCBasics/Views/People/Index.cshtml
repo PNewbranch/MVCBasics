@@ -1,10 +1,7 @@
-﻿@*Lagt till första raden nedan*@
-@model List<People>     //Denna vyn förväntar sig att få in en lista av människor
+﻿@model List<People> 
 @{
     ViewData["Title"] = "People Index";
 }
-
-
 
 @*DENNA VYN SKALL BARA VISA VIDARE TILL ANNAN SIDA*@
 
@@ -32,6 +29,11 @@
             <th>Namn</th>
             <th>Telefon</th>
             <th>Stad</th>
+            @*<td>
+            <a class="btn btn-success" style="width:127%" asp-action="Create"> Klicka här för att registrera NY KUND</a>
+        </td>*@
+            <th></th>
+            <th></th>
         </tr>
     </thead>
 
@@ -43,7 +45,7 @@
             <td>@aPeople.PhoneNumber</td>
             <td>@aPeople.City</td>
             <td>
-                @Html.ActionLink("Ändra", "Update", new { id = aPeople.Id })  @*Html.ActionLink skapar en link till en "controller action" - Update*@
+                @Html.ActionLink("Ändra", "Edit", new { id = aPeople.Id })  @*Html.ActionLink skapar en link till en "controller action" - Update*@
             </td>
             <td>
                 <a asp-action="Remove" asp-route-id="@aPeople.Id">Radera</a>   @*REMOVEKNAPPEN*@

@@ -68,8 +68,10 @@ namespace MVCBasics.Controllers
         }
 
 
+
+
         [HttpGet]
-        public IActionResult Update(int id)
+        public IActionResult Edit(int id)
         {
             People people = _peopleService.Find(id);
 
@@ -82,7 +84,7 @@ namespace MVCBasics.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(People people)
+        public IActionResult Edit(People people)
         {
             if (ModelState.IsValid)
             {

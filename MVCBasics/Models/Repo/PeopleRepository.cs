@@ -69,11 +69,10 @@ namespace MVCBasics.Models            //.Repo
             return _exDbContext.Peoples.ToList();
         }
 
+        //public List<People> Contains()   
+        //{
+        //    return _exDbContext.Peoples.ToList();
+        //}
 
-        public List<People> Contains()   //SKALL KODAS
-        {
-            return _exDbContext.Peoples.ToList();
-        }
-        
     }
 }

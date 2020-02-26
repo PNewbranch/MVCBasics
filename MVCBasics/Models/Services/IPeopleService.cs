@@ -17,10 +17,13 @@ namespace MVCBasics.Models            //.Services ta bort
         People Find(int id);
 
         bool Update(People people);
+
+
+
         
         List<People> All();    
 
-        List<People> Contains(string filtervariabel);
+        //List<People> Contains(string filtervariabel);
 
     }
 }

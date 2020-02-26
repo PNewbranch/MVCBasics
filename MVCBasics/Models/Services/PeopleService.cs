@@ -24,8 +24,8 @@ namespace MVCBasics.Models            //.Services  ta bort
         public People Create(string name, string phoneNumber, string city)
         {
             if (string.IsNullOrWhiteSpace(name)
-                || string.IsNullOrWhiteSpace(phoneNumber)
-                || string.IsNullOrWhiteSpace(city)
+                //|| string.IsNullOrWhiteSpace(phoneNumber)
+                //|| string.IsNullOrWhiteSpace(city)
                 )
             {
                 return null;
@@ -82,16 +82,18 @@ namespace MVCBasics.Models            //.Services  ta bort
         }
 
 
+
+
+
         public List<People> All()
         {
             return _peopleRepo.All();
         }
-
-
-        public List<People> Contains(string filtervariabel)
-        {
-            return _peopleRepo.Contains();
-        }
+        
+        //public List<People> Contains(string filtervariabel)
+        //{
+        //    return _peopleRepo.Contains();
+        //}
 
 
     }

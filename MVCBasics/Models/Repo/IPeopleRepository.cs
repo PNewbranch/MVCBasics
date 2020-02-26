@@ -15,8 +15,11 @@ namespace MVCBasics.Models                   //.Repo tagit bort
 
         bool Update(People people);
 
+
+
+
         List<People> All();
 
-        List<People> Contains();
+        //List<People> Contains();
     }
 }

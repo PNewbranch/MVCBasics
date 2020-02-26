@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;  //Lagt till
 using MVCBasics.Models;         //Lagt till 
 
 
+
 namespace MVCBasics.Controllers
 {
     public class PeopleController : Controller
@@ -29,17 +30,20 @@ namespace MVCBasics.Controllers
         }
 
 
+        //Full Lista och Filtrerad Lista använder samma INDEX
         [HttpPost]
         public IActionResult Index(string filtervariabel)  /*inparameter är formens inputbariabel "filtervariabel" - måste vara lika*/
         {
             if (string.IsNullOrWhiteSpace(filtervariabel))
             {
-                return View(_peopleService);            
+                return View(_peopleService.All());            
             }
             else
             {
-                return View(_peopleService.All());        //Anropa service visa alla
-
+                //Lägger över People-listan i en ny lista som gör så att inte kommandona inte krockar (Ulf hjälpte)
+                List<People> theList = _peopleService.All();
+                //Anv System.Linq - och LAMBDA => för att få en snabbare/enklare lösning - vi får fler och bättre "options"
+                return View(theList.Where(person => person.City.Contains(filtervariabel)).ToList()); //använd filtervariabel för att filtrera 
             }
         }
 

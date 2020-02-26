@@ -45,10 +45,14 @@
             <td>@aPeople.PhoneNumber</td>
             <td>@aPeople.City</td>
             <td>
-                @Html.ActionLink("Ändra", "Edit", new { id = aPeople.Id })  @*Html.ActionLink skapar en link till en "controller action" - Update*@
+                <center>
+                    @Html.ActionLink("Ändra", "Edit", new { id = aPeople.Id })  @*Html.ActionLink skapar en link till en "controller action" - Update*@
+                </center>
             </td>
             <td>
-                <a asp-action="Remove" asp-route-id="@aPeople.Id">Radera</a>   @*REMOVEKNAPPEN*@
+                <center>
+                    <a asp-action="Remove" asp-route-id="@aPeople.Id">Radera</a>   @*REMOVEKNAPPEN*@
+                </center>
             </td>
         </tr>
         }
@@ -62,15 +66,20 @@
 @*1 och letar upp controller "People" acton "Index" och metod "post" *@
 <form asp-controller="People" asp-action="Index" method="post">
 
-    <p id="dangerText">Vid filtrering, ange värde och tryck FILTRERA.</p>
+    <p id="dangerText">Filtrering kan ske på "Stad".</p>
 
-    <input type="text" name="filtervariabel" value="" />             @*2. VARIABELNAMN="filtervariabel"  -  tar jag värdet i formfältet = inputvärde i controllerns POST *@
-             @*"filtervariabel" - formens input variabel - används som input till index/Post i PeopleControllern MÅSTE HA SAMMA NAMN PÅ BÄGGE STÄLLEN*@
+    <input type="text" name="filtervariabel" value="" />   @*2. VARIABELNAMN="filtervariabel"  -  tar jag värdet i formfältet = inputvärde i controllerns POST *@
+                                                           @*"filtervariabel" - formens input variabel - används som input till index/Post i PeopleControllern MÅSTE HA SAMMA NAMN PÅ BÄGGE STÄLLEN*@
 
     @*<input class="btn btn-success" style="width:50%" asp-action="" type="submit" value="FILTRERA">*@      @*1. Knapp - när jag trycker på knappen *@
     <input id="dangerText" type="submit" value="Filtrera!" />
 
+
+    @*xxx
+    <a asp-action="Filtrera" asp-route-id="@name">Filtrera</a>*@
+
 </form>
+
 
 
 

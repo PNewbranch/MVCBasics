@@ -90,10 +90,7 @@ namespace MVCBasics.Models            //.Services  ta bort
             return _peopleRepo.All();
         }
         
-        //public List<People> Contains(string filtervariabel)
-        //{
-        //    return _peopleRepo.Contains();
-        //}
+
 
 
     }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;     //Lägg till 
+using System.ComponentModel.DataAnnotations;     //Lägg till - you can control validation of the models from views based on the ViewModel
 using System.Linq;
 using System.Threading.Tasks;
 

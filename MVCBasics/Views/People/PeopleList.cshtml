@@ -1,0 +1,26 @@
+﻿@model List<People>
+@{
+    ViewData["Title"] = "PeopleList";
+}
+
+<h1>PeopleList</h1>
+
+<div class="col-12">
+    <div class="row">
+        <div class="col">
+            <h5>Namnet</h5>
+        </div>
+        <div class="col">
+            <h5>Telefonnummret</h5>
+        </div>
+        <div class="col">
+            <h5>Staden</h5>
+        </div>
+    </div>
+    <hr />
+    @foreach (var item in Model)    @*PartialView nedan är EN rad som körs FOREACH på = uppfattas som lista*@ 
+    {
+        <partial name="_PeoplePartial" model="item" />
+    }
+
+</div>

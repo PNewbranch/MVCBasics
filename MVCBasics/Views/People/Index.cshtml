@@ -8,13 +8,15 @@
 <h1>Kundregister</h1>
 
 
+
 @*Denna raden lägger ut en klickbar text "Registrera Kund" - använder dedikerade taggen "a" som ankare (slipper då ha koppling till något annat).*@
 @*"a" fungerar som ett ankare/en dummy (dedikerad precis som ec <p> </p>)*@
-<a class="btn btn-success" style="width:50%" asp-action="Create"> Klicka här för att registrera NY KUND</a>
+<a class="btn btn-success" style="width:50%" asp-action="Create"> <i class="fas fa-plus"></i> Klicka här för att registrera NY KUND</a>
+
 
 @*Taghelper är inte tänkt att fungera på button - fungerar främst på ANKAR-länk och i Forms
     Se: https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/intro?view=aspnetcore-3.1
-    <button class="btn btn-success" asp-action="Create"> Registrera Kund</button>*@
+    <button class="btn btn-success" asp-action="Create"> Registrera Ny</button>*@
 
 
 
@@ -40,22 +42,36 @@
     <tbody>
         @foreach (People aPeople in Model)
         {
-        <tr>
-            <td>@aPeople.Name</td>
-            <td>@aPeople.PhoneNumber</td>
-            <td>@aPeople.City</td>
-            <td>
-                <center>
-                    @Html.ActionLink("Ändra", "Edit", new { id = aPeople.Id })  @*Html.ActionLink skapar en link till en "controller action" - Update*@
-                </center>
-            </td>
-            <td>
-                <center>
-                    <a asp-action="Remove" asp-route-id="@aPeople.Id">Radera</a>   @*REMOVEKNAPPEN*@
-                </center>
-            </td>
-        </tr>
+            <tr>
+                <td>@aPeople.Name</td>
+                <td>@aPeople.PhoneNumber</td>
+                <td>@aPeople.City</td>
+                <td>
+                    <center>
+
+                        @*Denna rad fungerar inte med icon...*@
+                        @*Html.ActionLink skapar en link till en "controller action" - Update*@
+                        @Html.ActionLink("Ändra", "Edit", new { id = aPeople.Id }, new { _class = "far fa-trash-alt" })
+
+
+                        @*HTML-HELPER - mindre flexibel, använd hellre*@
+                        @*@Html.ActionLink("Ändra", "Edit","People", null, new { @class = "fas fa-pencil-alt" } )*@
+
+                    </center>
+                </td>
+                <td>
+                    <center>
+
+                        @*TAG-HELPER - mer flexibel, används med fördel istf Htmltaggen*@
+                        @*<a class="far fa-trash-alt" asp-action="Remove" asp-route-id="@aPeople.Id">Radera</a>*@
+                        <partial name="_DeleteButtonPartial" model="aPeople.Id" />
+
+                    </center>
+                </td>
+            </tr>
         }
+
+
     </tbody>
 
 </table>
@@ -63,7 +79,7 @@
 
 
 
-@*1 och letar upp controller "People" acton "Index" och metod "post" *@
+@*1 och letar upp controller "People" acton "Index" och metod "post" *@  @*Form Tag Helper Taghelper*@
 <form asp-controller="People" asp-action="Index" method="post">
 
     <p id="dangerText">Filtrering kan ske på "Stad".</p>

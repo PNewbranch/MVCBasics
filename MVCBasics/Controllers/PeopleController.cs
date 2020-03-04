@@ -62,7 +62,7 @@ namespace MVCBasics.Controllers
         [HttpPost]
         public IActionResult Create(PeopleViewModel people) /*använder view model för att få in rätt värde */
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) //ModelState används för att spåra/upptäcka fel/avvikelse kopplat till modellen
             {
                 _peopleService.Create(people.Name, people.PhoneNumber, people.City);
 
@@ -122,8 +122,19 @@ namespace MVCBasics.Controllers
             return View("Index", _peopleService.All());
         }
 
+ 
 
 
+
+        public IActionResult PeopleList()
+        {
+            return View(_peopleService.All());  /*Controllern dirigerar till Service*/
+        }
+
+        public IActionResult PartialPeople(int id)
+        {
+            return PartialView("_PeoplePartial", _peopleService.Find(id));
+        }
 
     }
 }

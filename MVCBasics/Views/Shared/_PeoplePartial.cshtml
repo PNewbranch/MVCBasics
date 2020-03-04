@@ -1,0 +1,27 @@
+﻿@model People
+
+@*<tr>
+    <td>@Model.Name</td>
+    <td>@Model.PhoneNumber</td>
+    <td>@Model.City</td>
+</tr>*@
+
+
+
+@*Använder Bootstrap med columner isället för tabell ovan*@
+
+<div class="row">  @*detta är RAD - ROW - en rad, som sedan kör foreach på*@ 
+
+    <div class="col">
+        <p>@Model.Name</p>
+    </div>
+
+    <div class="col">
+        <p>@Model.PhoneNumber</p>
+    </div>
+
+    <div class="col">
+        <p>@Model.City</p>
+    </div>
+
+</div>

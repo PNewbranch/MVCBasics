@@ -6,21 +6,30 @@
 <h1>PeopleList</h1>
 
 <div class="col-12">
+
     <div class="row">
-        <div class="col">
+        <div class="col-3">
             <h5>Namnet</h5>
         </div>
-        <div class="col">
+        <div class="col-2">
             <h5>Telefonnummret</h5>
         </div>
-        <div class="col">
+        <div class="col-2">
             <h5>Staden</h5>
         </div>
     </div>
+
     <hr />
-    @foreach (var item in Model)    @*PartialView nedan är EN rad som körs FOREACH på = uppfattas som lista*@ 
+
+    @foreach (var item in Model)@*PartialView nedan är EN rad som körs FOREACH på = uppfattas som lista*@
     {
         <partial name="_PeoplePartial" model="item" />
     }
 
+
+
 </div>
+
+
+@*Javascript för Partial Views recordhantering*@
+<script src="~/js/PeopleListPV.js" asp-append-version="true"></script>

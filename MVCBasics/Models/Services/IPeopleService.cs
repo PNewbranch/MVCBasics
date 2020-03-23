@@ -12,18 +12,20 @@ namespace MVCBasics.Models            //.Services ta bort
         
         People Create(string name, string phoneNumber, string city);        /*2. LÄGG TILL ALLA SERVICES I INTERFACET*/
         
-        bool Remove(int id);  //boolean, används enligt "lyckades jag ta bort"?
+        bool Delete(int id);  //boolean, används enligt "lyckades jag ta bort"?
 
         People Find(int id);
 
         bool Update(People people);
 
 
-
-        
-        List<People> All();    
+               
+        List<People> All();
 
         //List<People> Contains(string filtervariabel);
+
+
+        //bool RemovePV(int id);
 
     }
 }

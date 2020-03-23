@@ -23,7 +23,9 @@
 
     @*CDN-javaRow1/row2 - Dessa TVÅ RADER läggs mellan "If you’re using our compiled JavaScript, don’t forget to include CDN versions of jQuery and Popper.js before it.""*@
     @*JavaCDN används för dropdown, rullande bilder och andra animeringar - använder javascript så måste vi använda Jquery*@
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
     @*CDN-row2 - Detta är ANDRA RADEN i "BootstrapCDN Skip the download with BootstrapCDN to deliver cached version of Bootstrap’s compiled CSS and JS to your project.""*@
@@ -90,9 +92,9 @@
             </li>
 
             @*UFFES ORDNING
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Cars" asp-action="CarList">Car List</a>
-            </li>*@
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Cars" asp-action="CarList">Car List</a>
+                </li>*@
 
 
         </ul>
@@ -106,12 +108,18 @@
         @RenderBody() @*//här använder vi våra Viewers - skapa en del av en sida, den os du nu är på?*@
     </div>
 
-         
+
 
     @*detta är tillagt - (kommentarer ser ut så här i MVC*@
-<footer>
-    <p>Peter &copy; @DateTime.Now</p>
-</footer>
+    <footer>
+        <p>Peter &copy; @DateTime.Now</p>
+    </footer>
+
+    @*Uffes - jag har INTE ladda ner bootstrap
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @RenderSection("Scripts", required: false)*@
 
 </body>
 </html>

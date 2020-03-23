@@ -26,7 +26,7 @@ namespace MVCBasics.Models            //.Repo
         }
 
 
-        public bool Remove(People people)
+        public bool Delete(People people)  //finns troligen en konvertering tidigare eftersom inte ID används
         {
             var result = _exDbContext.Peoples.Remove(people);
             _exDbContext.SaveChanges();
@@ -58,12 +58,7 @@ namespace MVCBasics.Models            //.Repo
             return true;
         }
 
-
-
-
-
-
-
+               
         public List<People> All()
         {
             return _exDbContext.Peoples.ToList();
@@ -73,6 +68,29 @@ namespace MVCBasics.Models            //.Repo
         //{
         //    return _exDbContext.Peoples.ToList();
         //}
+
+
+
+
+       // //19/3 allt nedan
+       //public bool Remove(int id);
+       // bool Update(int id);
+
+
+
+
+
+        //public bool Delete(int id)  //finns troligen en konvertering tidigare eftersom inte ID används
+        //{
+
+        //    var result = _exDbContext.Peoples.Remove(_exDbContext.Peoples.SingleOrDefault( p => p.Id == id));
+        //    _exDbContext.SaveChanges();
+        //    return true;
+        //}
+
+
+
+
 
     }
 }

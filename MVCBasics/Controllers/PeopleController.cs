@@ -13,7 +13,7 @@ namespace MVCBasics.Controllers
     {
 
         //MÅSTE AVÄNDA DEPENDENCE INJECTION
-        IPeopleService _peopleService; //spara som injectat
+        IPeopleService _peopleService; //spara som injectat - uffe har denna som private readonly, why?
 
         public PeopleController(IPeopleService peopleService)  //Konstructor med dependence injection
         {
@@ -47,9 +47,7 @@ namespace MVCBasics.Controllers
             }
         }
 
-
-
-
+               
 
         //Hämta sidan
         [HttpGet]
@@ -72,8 +70,7 @@ namespace MVCBasics.Controllers
         }
 
 
-
-
+        
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -86,13 +83,14 @@ namespace MVCBasics.Controllers
             }
             return View(people);
         }
+        
 
         [HttpPost]
-        public IActionResult Edit(People people)
+        public IActionResult Edit(People people) //Notera olika namn Edit här och Update i Services
         {
             if (ModelState.IsValid)
             {
-                _peopleService.Update(people);
+                _peopleService.Update(people);  //CONTROLLERN använder EDIT i Services
 
                 return RedirectToAction("Index");
             }
@@ -101,15 +99,10 @@ namespace MVCBasics.Controllers
 
 
 
-
-
-
-
-
         [HttpGet]
-        public IActionResult Remove(int id)
+        public IActionResult Delete(int id)   
         {
-            bool result = _peopleService.Remove(id); //serviceinterfacet kallar på interface 
+            bool result = _peopleService.Delete(id); //serviceinterfacet kallar på interface 
 
             if (result)
             {
@@ -123,18 +116,58 @@ namespace MVCBasics.Controllers
         }
 
  
+       
+               
 
-
-
-        public IActionResult PeopleList()
+        public IActionResult PeopleList() /*Visa hela listan med rader av PartialView*/
         {
             return View(_peopleService.All());  /*Controllern dirigerar till Service*/
         }
 
-        public IActionResult PartialPeople(int id)
+
+        public IActionResult PartialPeople(int id) /*Visar enskild rad*/
         {
             return PartialView("_PeoplePartial", _peopleService.Find(id));
         }
+
+
+
+
+
+        //NEDAN TVÅ ÄR NYA SEDAN REMOVE-EDIT-KNAPPAR
+
+
+        //public IActionResult RemovePV(int id) /*Visar enskild rad*/
+        //{
+        //    if (_peopleService.Remove(id))
+        //    {
+        //        return Content("was deleted"); //om lyckats skickas detta till javascriptfilen
+        //    }
+        //    else
+        //    {
+        //        return NotFound(); //alt om ej lyckas
+        //    }
+
+        //}
+
+
+
+        //[HttpPost]
+        //public IActionResult EditPV(int id) //Notera olika namn Edit här och Update i Services
+        //{
+        //    People people = _peopleService.Find(id);
+
+        //    if (ModelState.IsValid)
+        //    {
+
+        //        _peopleService.Update(people);  //CONTROLLERN använder EDIT i Services
+
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(people);
+        //}
+
+
 
     }
 }

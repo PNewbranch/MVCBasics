@@ -30,20 +30,19 @@ namespace MVCBasics.Models            //.Services  ta bort
             {
                 return null;
             }
-
             People people = new People() { Name = name, PhoneNumber = phoneNumber, City = city };
             return _peopleRepo.Create(people);
         }
      
 
 
-        public bool Remove(int id)
+        public bool Delete(int id)
         {
             People people = Find(id);
 
             if (people != null)
             {
-                return _peopleRepo.Remove(people);
+                return _peopleRepo.Delete(people);
             }
 
             return false;
@@ -84,13 +83,40 @@ namespace MVCBasics.Models            //.Services  ta bort
 
 
 
-
         public List<People> All()
         {
             return _peopleRepo.All();
         }
-        
 
+
+
+
+
+
+
+        //        //20200310 - FINNS EN UPDATE TILL OVAN - DENNA ÄR INTE TESTAD/VALIDERAD
+        //        public bool Update(PeopleViewModel person, int id)  //en boolean i retur
+        //        {
+        //            if (person == null)
+        //            {
+        //                return false;
+        //            }
+
+        //            People currentPerson = Find(id);
+
+        //            if (currentPerson == null)
+        //            {
+        //                return false;
+        //            }
+
+        //            currentPerson.Name = person.Name;
+        //            currentPerson.PhoneNumber = person.PhoneNumber;
+        //            currentPerson.City = person.City;
+
+        //            _peopleRepo.Update(currentPerson);
+
+        //            return true;
+        //        }
 
 
     }

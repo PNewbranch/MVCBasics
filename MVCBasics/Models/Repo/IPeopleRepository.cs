@@ -9,17 +9,26 @@ namespace MVCBasics.Models                   //.Repo tagit bort
     {
         People Create(People people);
 
-        bool Remove(People people);
+        bool Delete(People people);
 
         People Find(int id);
 
         bool Update(People people);
 
 
-
-
         List<People> All();
 
         //List<People> Contains();
+
+
+
+
+
+
+        //19/3 allt nedan
+       // bool Delete(int id);
+        //bool UpdatePV(int id);
+
+
     }
 }

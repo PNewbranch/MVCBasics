@@ -10,18 +10,36 @@
 
 @*Använder Bootstrap med columner isället för tabell ovan*@
 
-<div class="row">  @*detta är RAD - ROW - en rad, som sedan kör foreach på*@ 
+    <div class="row" id="@("peopleListId" + Model.Id)">         
+        @*varje record blir en egen rad/partialview - dessa får ett unikt ID*@
 
-    <div class="col">
-        <p>@Model.Name</p>
+        <div class="col-3">
+            <p>@Model.Name</p>
+        </div>
+
+        <div class="col-2">
+            <p>@Model.PhoneNumber</p>
+        </div>
+
+        <div class="col-2">
+            <p>@Model.City</p>
+        </div>
+
+
+
+        
+        <div>
+            @*<button onclick="deletePerson(Id)">Ta bort</button>  VARFÖR INTE BARA ID*@
+            <button onclick="removePV(@Model.Id)">Delete</button>       @*Här riktar vi till deletePerson med unikt id för att säkerställa att vi träffar rätt*@
+        </div>                                                          @*Modellen kommer att användas på en PartialView med bara ett record = unikt id*@
+
+
+        <div>
+            <button onclick="editPV(@Model.Id)">Edit</button>
+        </div>
+
+
+        @*https://www.c-sharpcorner.com/article/crud-operation-in-asp-net-mvc-using-ajax-and-bootstrap/*@
+
+
     </div>
-
-    <div class="col">
-        <p>@Model.PhoneNumber</p>
-    </div>
-
-    <div class="col">
-        <p>@Model.City</p>
-    </div>
-
-</div>

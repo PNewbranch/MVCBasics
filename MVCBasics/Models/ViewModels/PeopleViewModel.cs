@@ -29,6 +29,16 @@ namespace MVCBasics.Models
 
 
 
+        //19/3 allt nedan
+        public PeopleViewModel() {} //zero constuctor(inga inparametrar)
+
+        public PeopleViewModel(People people)
+        {
+            Name = people.Name;
+            PhoneNumber = people.PhoneNumber;
+            City = people.City;
+        }
+
     }
        
 }
